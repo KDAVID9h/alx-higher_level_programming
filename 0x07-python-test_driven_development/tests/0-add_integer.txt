@@ -1,0 +1,122 @@
+
+=================================
+Comment Utiliser 0-add_integer.py
+=================================
+
+Ce module définit une fonction d'addition d'entiers ``add_integer(a, b=98)``.
+
+Utilisation
+===========
+
+``add_integer(...)``` renvoie l'addition de ses deux arguments. Pour les nombres,
+cette valeur est équivalente à l'utilisation de l'opérateur ``+``.
+
+::
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 3)
+    5
+
+::
+
+    >>> add_integer(2, -3)
+    -1
+
+La fonction fonctionne également avec des valeurs en virgule flottante.
+
+::
+
+    >>> add_integer(2.0, 3.0)
+    5
+
+Notez que les nombres flottants sont convertis en entiers avant l'addition.
+
+::
+
+    >>> add_integer(2.9, 0.2)
+    2
+
+::
+
+    >>> add_integer(-2.9, -0.2)
+    -2
+
+Il est possible de combiner des valeurs flottantes et non flottantes.
+
+::
+
+    >>> add_integer(2.3, -3)
+    -1
+
+Le deuxième argument est facultatif - par défaut, il est égal à 98.
+
+::
+
+    >>> add_integer(2)
+    100
+
+Non-Numériques
+==============
+
+``add_integer()`` s'attend à ce que les deux arguments soient soit des entiers, soit des flottants.
+Si l'un ou l'autre argument n'est ni un entier ni un flottant, une TypeError est levée :
+
+::
+
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a doit être un entier
+
+::
+
+    >>> add_integer(2, "hello")
+    Traceback (most recent call last):
+    TypeError: b doit être un entier
+
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a doit être un entier
+
+::
+
+    >>> add_integer(2.3, None)
+    Traceback (most recent call last):
+    TypeError: b doit être un entier
+
+Si les deux arguments ne sont pas des entiers ou des flottants, un message TypeError est imprimé uniquement pour le premier argument.
+
+::
+
+    >>> add_integer("hello", "there")
+    Traceback (most recent call last):
+    TypeError: a doit être un entier
+
+La fonction échouera si l'infini est fourni.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: ne peut pas convertir l'infini en entier
+
+::
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: ne peut pas convertir l'infini en entier
+
+Et de même avec les nombres NaN.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: ne peut pas convertir NaN en entier
+
+::
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: ne peut pas convertir NaN en entier
