@@ -26,4 +26,3 @@ This repository contains solutions to various tasks related to Python programmin
 ### 5. Print string
 - **File:** [5-print_string.py](./0x00-python-hello_world/5-print_string.py)
 - **Description:** Complete the given Python script to print the string stored in the variable `str` three times, followed by its first 9 characters.
-
